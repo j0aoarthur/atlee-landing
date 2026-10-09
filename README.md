@@ -4,12 +4,31 @@ Landing page institucional da **Atlee**, a plataforma que digitaliza a gestão d
 
 Site estático (HTML + CSS + JS puro), pronto para o **GitHub Pages** — sem build e sem dependências para instalar.
 
-## Publicar no GitHub Pages
+## Publicar no GitHub Pages — domínio **atlee.com.br**
+
+O site usa sempre o domínio **https://atlee.com.br** (arquivo `CNAME` na raiz e URL canônica no `index.html`).
 
 1. No repositório, abra **Settings → Pages**.
-2. Em **Build and deployment**, escolha **Source: Deploy from a branch**.
-3. Selecione a branch **`main`** e a pasta **`/ (root)`** e clique em **Save**.
-4. Em cerca de 1 minuto o site fica disponível em `https://j0aoarthur.github.io/atlee-landing/`.
+2. Em **Build and deployment**, escolha **Source: Deploy from a branch**, branch **`main`**, pasta **`/ (root)`**, e clique em **Save**.
+3. Em **Custom domain**, confirme **`atlee.com.br`** e clique em **Save**.
+4. No painel de DNS do domínio (Registro.br ou o provedor que você usa), crie:
+
+   | Tipo | Nome | Valor |
+   |------|------|-------|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | AAAA | `@` | `2606:50c0:8000::153` |
+   | AAAA | `@` | `2606:50c0:8001::153` |
+   | AAAA | `@` | `2606:50c0:8002::153` |
+   | AAAA | `@` | `2606:50c0:8003::153` |
+   | CNAME | `www` | `j0aoarthur.github.io` |
+
+   Com o `www` apontado, o GitHub redireciona `www.atlee.com.br` para `atlee.com.br` automaticamente.
+5. Quando o GitHub validar o DNS, marque **Enforce HTTPS** (pode levar até 24 h para a opção aparecer).
+
+> Não apague o arquivo `CNAME`: é ele que mantém o domínio configurado a cada novo deploy.
 
 ## Estrutura
 
